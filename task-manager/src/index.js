@@ -8,34 +8,42 @@ const port = process.env.PORT || 3000
 app.use(express.json())
 
 // Route for user creation
-app.post('/users', (req, res) => {
+app.post('/users', async (req, res) => {
     const user = new User(req.body)
-    user.save()
-    .then(() => {
+
+    try {
+        await user.save()
         res.status(201).send(user)
-    })
-    .catch((e) => {
+    } catch (e) {
         res.status(400).send(e)
-    })
+    }
+
 })
 
-app.get('/users', (req, res) => {
-    User.find({})
-    .then((users) => {
-        res.status(200).send(users)
-    })
-    .catch((e) => res.status(400).send(e))
+app.get('/users', async (req, res) => {
+    try {
+        const users = await User.find({})
+        res.send(users)
+    } catch (e) {
+        res.status(500).send()
+    }
+    
+    
 })
 // Fetch user by ID
-app.get('/users/:id', (req, res) => {
+app.get('/users/:id', async (req, res) => {
     const _id = req.params.id
+    try {
+        const user = User.findById(_id)
 
-    User.findById(_id)
-    .then((user) => {
-        if(!user) return res.status(404).send()
-        res.send(user) 
-    })
-    .catch((e) => res.status(500).send(e))
+        if(!user){
+            return res.status(404).send()
+        }
+        res.send(user)
+        
+    } catch (e) {
+        res.status(500).send()
+    }
 
 })
 

@@ -11,7 +11,7 @@ const User =  require('../src/models/user')
 //  }).catch((e) => console.log(e))
 
 const updateAgeAndCount = async (id, age) => {
-    const user = await User.findByIdAndUpdate(id, {age: age})
+    await User.findByIdAndUpdate(id, {age: age})
     const count = await User.countDocuments({ age: age })
     return count
 }
