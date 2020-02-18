@@ -16,6 +16,7 @@ task-manager/node_modules
 node_modules
 package-lock.json
 task-manager/config/
+/config
 *.env
 *.log
 *.gz
