@@ -13,6 +13,7 @@ notes-app/node_modules
 weather-app/node_modules
 web-server/node_modules
 task-manager/node_modules
+task-manager/config
 package-lock.json
 *.log
 *.gz
