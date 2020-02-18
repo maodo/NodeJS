@@ -14,6 +14,7 @@ weather-app/node_modules
 web-server/node_modules
 task-manager/node_modules
 task-manager/config
+task-manager/playground
 package-lock.json
 *.log
 *.gz
