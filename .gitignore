@@ -15,7 +15,7 @@ web-server/node_modules
 task-manager/node_modules
 node_modules
 package-lock.json
-config/
+config/.env
 .env
 *.log
 *.gz
